@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pet Adoption</title>
+    <link rel="stylesheet" href="{% static 'pets/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>🐶 Pet Adoption Center 🐱</h1>
+    </header>
+    <div class="container">
+        {% for pet in pets %}
+            <div class="pet-card">
+                <img src="{{ pet.photo.url }}">
+                <h2>{{ pet.name }}</h2>
+                <p><strong>Age:</strong> {{ pet.age }}</p>
+                <p><strong>Breed:</strong> {{ pet.breed }}</p>
+                <a href="{% url 'pet_detail' pet.id %}">
+                    <button>Adopt Me</button>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

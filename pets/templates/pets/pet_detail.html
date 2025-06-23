@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact for {{ pet.name }}</title>
+    <link rel="stylesheet" href="{% static 'pets/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Interested in {{ pet.name }}?</h1>
+    </header>
+    <div class="container" style="flex-direction: column; align-items: center;">
+        <img src="{{ pet.photo.url }}" width="300" style="border-radius:10px;">
+        <p><strong>Breed:</strong> {{ pet.breed }}</p>
+        <p><strong>Age:</strong> {{ pet.age }}</p>
+
+        <form method="post" style="width:300px;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Send Interest</button>
+        </form>
+    </div>
+</body>
+</html>
